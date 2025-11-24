@@ -34,6 +34,14 @@ IoT 센서(초음파), AI 이미지 분류, Firebase Realtime Database, 모바�
 - 앱에서 업로드된 이미지를 서버에서 처리 후 결과 반환
 - 모델 정확도 향상을 위해 데이터 수집/전처리/재학습 가능 구조
 
+### Firebase 서버(Realtime Database)
+- 하드웨어(ESP32), 사용자 앱(Android), 관리자 웹이 모두 공유하는 중앙 데이터 허브 역할
+- 쓰레기통 상태(distance, level, status, history 등) 실시간 저장 및 조회
+- 사용자 앱에서 업로드한 이미지 URL 저장 -> AI 서버에서 실시간 감지
+- AI 분석 결과(class, confidence)를 DB에 기록하고 해당 분류 카테고리 쓰레기통으로 OPEN Command 전송
+- 명령(inbox/ack) 구조를 통한 하드웨어 제어 로직 통합
+- 분산된 각 요소(앱·웹·ESP32·AI 서버)간의 통신을 하나의 DB로 표준화하여 시스템 일관성 확보
+
 ---
 
 ## 프로젝트 구조
